@@ -1,0 +1,22 @@
+{
+  "name": "smsservice",
+  "version": "1.0.0",
+  "description": "SMS Service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SMS",
+    "Service",
+    "Message",
+    "Service"
+  ],
+  "author": "Usuf",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "node": "0.0.0",
+    "twilio": "^2.9.0"
+  }
+}
