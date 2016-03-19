@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-activedirectory-authentication",
+  "version": "1.0.0",
+  "description": "Authentication with Active Directory using Nodejs ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "authentication"
+  ],
+  "author": "Usuf",
+  "license": "ISC",
+  "dependencies": {
+    "activedirectory": "^0.7.2"
+  }
+}
