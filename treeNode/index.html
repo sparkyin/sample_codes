@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>Tree Node</title>
+
+</head>
+
+<body>
+    <h1>Tree Node</h1>
+
+    <div id="treenode">
+
+    </div>
+    <script>
+        var tree = [{
+            id: 0,
+            name: "192.168.0.0"
+        }, {
+            id: 1,
+            name: "192.168.1.0"
+        }, {
+            id: 2,
+            name: "192.168.2.0",
+            child: [{
+                id: 3,
+                name: "192.168.2.1"
+            }, {
+                id: 4,
+                name: "192.168.2.2"
+            }, ]
+        }, {
+            id: 5,
+            name: "192.168.3.0",
+            child: [{
+                id: 6,
+                name: "192.168.3.1"
+            }, {
+                id: 7,
+                name: "192.168.3.2"
+            }, ]
+        }, {
+            id: 8,
+            name: "192.168.4.0"
+        }, ];
+
+        var html = LoadTree(tree);
+
+        function LoadTree(P) {
+            var _html = "";
+            if (P.length > 0) {
+                P.forEach(function(val, indx) {
+                    var _icon = (val.child && val.child.length > 0) ? "+ &nbsp;" : "- &nbsp;";
+                    _html += "<div style='margin-top:6px;'> <span id='" + val.id + "'><span id='" + val.id + "i' onclick='onPress(this)' class='true'>  " + _icon + " </span>" + val.name + "</span><div id='" + val.id + "c'  style='display:none;'>";
+                    if (val.child && val.child.length > 0) {
+                        _html += RenderChild(val.child);
+                    }
+                    _html += "</div></div>";
+                });
+                return _html;
+            }
+            return "No Tree Found";
+        }
+
+        function RenderChild(C) {
+            var _html = "";
+            C.forEach(function(val, indx) {
+                _html += "<div id='" + val.id + "' style='color:green;'>&nbsp; &nbsp; &nbsp; " + val.name;
+                if (val.child && val.child.length > 0) {
+                    _html += RenderChild(val.child);
+                }
+                _html += "</div>";
+            });
+            return _html;
+        }
+
+        function onPress(a) {
+            var _iconId = a.getAttribute("id");
+            var _divId = _iconId.match(/\d+/)[0]
+            if (a.getAttribute("class").indexOf("true") >= 0) { // if true
+                (document.getElementById(_iconId).innerHTML = "- &nbsp;");
+                a.setAttribute("class", "false");
+                document.getElementById(_divId + "c").setAttribute("style", "display:block;");
+            } else {
+                (document.getElementById(_iconId).innerHTML = "+ &nbsp;");
+                a.setAttribute("class", "true");
+                document.getElementById(_divId + "c").setAttribute("style", "display:none;");
+            }
+        } // on Press
+
+        document.getElementById("treenode").innerHTML = html;
+    </script>
+</body>
+
+</html>
